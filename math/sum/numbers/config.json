@@ -1,0 +1,15 @@
+{
+  "dockerImageBuilder": "cimg/go:1.14",
+  "inputs": [
+    {
+      "label": "Type the first value: ",
+      "name": "NUMBER_ONE",
+      "type": "text"
+    },
+    {
+      "label": "Type the second value: ",
+      "name": "NUMBER_TWO",
+      "type": "text"
+    }
+  ]
+}
