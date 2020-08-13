@@ -1,24 +1,25 @@
 package formula
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
 	"github.com/gookit/color"
 )
 
-type Formula struct {
-	Text    string
-	List    string
-	Boolean string
+type Input struct {
+	Username string
+	Token    string
 }
 
-func (h Formula) Run(writer io.Writer) {
+func (h Input) Run(writer io.Writer) {
 	var result string
-	result += fmt.Sprintf("Hello world!\n")
-	result += color.FgGreen.Render(fmt.Sprintf("You receive %s in text.\n", h.Text))
-	result += color.FgRed.Render(fmt.Sprintf("You receive %s in list.\n", h.List))
-	result += color.FgYellow.Render(fmt.Sprintf("You receive %s in boolean.\n", h.Boolean))
+	b, err := json.Marshal(h)
+	if err != nil {
+		panic(err)
+	}
+	result += color.FgGreen.Render(string(b) + "\n")
 
 	if _, err := fmt.Fprintf(writer, result); err != nil {
 		panic(err)

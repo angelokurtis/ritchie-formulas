@@ -6,13 +6,11 @@ import (
 )
 
 func main() {
-	input1 := os.Getenv("SAMPLE_TEXT")
-	input2 := os.Getenv("SAMPLE_LIST")
-	input3 := os.Getenv("SAMPLE_BOOL")
+	input1 := os.Getenv("GIT_USER")
+	input2 := os.Getenv("GIT_TOKEN")
 
-	formula.Formula{
-		Text:    input1,
-		List:    input2,
-		Boolean: input3,
+	formula.Input{
+		Username: input1,
+		Token:    input2,
 	}.Run(os.Stdout)
 }
